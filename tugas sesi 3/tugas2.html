@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Nilai Siswa</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>TABEL NILAI SISWA</h2>
+
+    <script>
+        // Array data siswa
+        const nama = ["Asep", "Iwan", "Cepi", "Agus", "Dadang"];
+        const tugas = [80, 75, 70, 65, 60];
+        const uts = [95, 75, 80, 40, 70];
+        const uas = [85, 90, 90, 55, 60];
+
+        // Array untuk menyimpan nilai akhir (NA)
+        const nilaiAkhir = [];
+
+        // Hitung nilai akhir untuk setiap siswa
+        // Rumus: na = 40% tugas + 30% uts + 30% uas
+        for (let i = 0; i < nama.length; i++) {
+            const na = (0.4 * tugas[i]) + (0.3 * uts[i]) + (0.3 * uas[i]);
+            nilaiAkhir.push(na);
+        }
+
+        // Mulai membuat struktur tabel dalam string
+        let tableHTML = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>NAMA SISWA</th>
+                        <th>TUGAS</th>
+                        <th>UTS</th>
+                        <th>UAS</th>
+                        <th>NA</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        // Lakukan perulangan untuk membuat baris tabel
+        for (let i = 0; i < nama.length; i++) {
+            tableHTML += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td>${nama[i]}</td>
+                    <td>${tugas[i]}</td>
+                    <td>${uts[i]}</td>
+                    <td>${uas[i]}</td>
+                    <td>${nilaiAkhir[i].toFixed(1)}</td>
+                </tr>
+            `;
+        }
+
+        // Tutup tabel
+        tableHTML += `
+                </tbody>
+            </table>
+        `;
+
+        // Tampilkan HTML tabel yang dihasilkan ke dalam body
+        document.body.innerHTML += tableHTML;
+    </script>
+
+</body>
+</html>
