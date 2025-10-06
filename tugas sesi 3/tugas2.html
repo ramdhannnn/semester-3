@@ -78,7 +78,6 @@
     const nilaiAkhir = [];
     const predikat = [];
 
-    // Hitung nilai akhir dan predikat
     for (let i = 0; i < nama.length; i++) {
       const na = (0.4 * tugas[i]) + (0.3 * uts[i]) + (0.3 * uas[i]);
       nilaiAkhir.push(na);
@@ -89,7 +88,6 @@
       else predikat.push("D");
     }
 
-    // Buat tabel dinamis
     let tableHTML = `
       <table>
         <thead>
